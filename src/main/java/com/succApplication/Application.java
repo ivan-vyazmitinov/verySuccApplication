@@ -1,4 +1,4 @@
-package com.succApplication.controllers;
+package com.succApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

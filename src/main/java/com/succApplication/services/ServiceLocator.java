@@ -1,7 +1,6 @@
 package com.succApplication.services;
 
-import com.succApplication.repositories.MySqlSuccRepository;
-import com.succApplication.repositories.SuccRepository;
+import com.succApplication.repositories.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +8,7 @@ import java.util.Map;
 public class ServiceLocator {
     private static Map<Class, Object> map = new HashMap<>();
     static {
+        map.put(ContextRepository.class,  new DefaultContextRepository());
         map.put(SuccRepository.class, new MySqlSuccRepository());
         map.put(SuccService.class,  new SuccService());
     }

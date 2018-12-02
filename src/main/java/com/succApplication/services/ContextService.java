@@ -1,7 +1,8 @@
 package com.succApplication.services;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ContextService {
-    List getContexts();
+    List<Map<String, Object>> getContexts();
 }

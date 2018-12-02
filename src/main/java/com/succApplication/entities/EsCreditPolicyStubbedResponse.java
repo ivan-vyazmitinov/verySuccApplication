@@ -11,7 +11,7 @@ public class EsCreditPolicyStubbedResponse {
     private EsCreditPolicyRequestParams params;
     private List<Map<String, Object>> context;
 
-    public EsCreditPolicyStubbedResponse(String kind, EsCreditPolicyRequestParams params, List context) {
+    public EsCreditPolicyStubbedResponse(String kind, EsCreditPolicyRequestParams params, List<Map<String, Object>> context) {
         this.kind = kind;
         this.params = params;
         this.context = context;

@@ -1,7 +1,7 @@
 package com.succApplication.entities;
 
 public class RequestError {
-    String errorText;
+    final private String errorText;
 
     public RequestError(String errorText){
         this.errorText = errorText;

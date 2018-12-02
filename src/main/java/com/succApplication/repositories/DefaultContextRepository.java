@@ -18,8 +18,8 @@ public class DefaultContextRepository implements ContextRepository{
     }
 
     @Override
-    public List getContexts(){
-        List<Map> contextList = new LinkedList<>();
+    public List<Map<String, Object>> getContexts(){
+        List<Map<String, Object>> contextList = new LinkedList<>();
 
         collection.find().into(contextList);
         contextList.forEach(n -> n.remove("_id"));

@@ -2,13 +2,15 @@ package com.succApplication.services;
 
 import com.succApplication.entities.Sucker;
 import com.succApplication.repositories.SuccRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Random;
 
 public class DefaultSuccService implements SuccService {
 
+    @Autowired
+    private SuccRepository succRepository;
     final private Random random = new Random();
-    private SuccRepository succRepository = ServiceLocator.getService(SuccRepository.class);
 
     @Override
     public Sucker processSuccName(String name){

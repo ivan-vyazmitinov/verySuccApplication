@@ -1,18 +1,19 @@
 package com.succApplication.repositories;
 
 import com.mongodb.*;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class DefaultContextRepository implements ContextRepository{
-    private final MongoClient mongoClient;
-    private final DB database;
-    private final DBCollection collection ;
+    private final MongoCollection collection ;
 
     public DefaultContextRepository() {
-        mongoClient = new MongoClient("localhost", 27017);
-        database = mongoClient.getDB("succMongoDB");
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoDatabase database = mongoClient.getDatabase("succMongoDB");
         collection = database.getCollection("context");
     }
 
@@ -20,15 +21,8 @@ public class DefaultContextRepository implements ContextRepository{
     public List getContexts(){
         List<Map> contextList = new LinkedList<>();
 
-        BasicDBObject searchQuery = new BasicDBObject();
-        DBCursor cursor = collection.find(searchQuery);
-
-
-        while (cursor.hasNext()){
-            contextList.add((Map) cursor.next());
-        }
+        collection.find().into(contextList);
         contextList.forEach(n -> n.remove("_id"));
-
         return contextList;
     }
 

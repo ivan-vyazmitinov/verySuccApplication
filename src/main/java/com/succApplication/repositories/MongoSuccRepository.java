@@ -3,6 +3,8 @@ package com.succApplication.repositories;
 import com.succApplication.entities.Sucker;
 import com.mongodb.*;
 
+import java.util.Optional;
+
 public class MongoSuccRepository implements SuccRepository{
     private final MongoClient mongoClient;
     private final DB database;
@@ -15,17 +17,17 @@ public class MongoSuccRepository implements SuccRepository{
     }
 
     @Override
-    public Sucker findByName(String name) {
+    public Optional<Sucker> findByName(String name) {
         BasicDBObject searchQuery = new BasicDBObject();
         searchQuery.put("name", name);
         DBCursor cursor = collection.find(searchQuery);
 
         if (cursor.hasNext()){
-            return new Sucker(
+            return Optional.of(new Sucker(
                     (String)cursor.one().get("name"),
-                    (Boolean)cursor.one().get("isSucc"));
+                    (Boolean)cursor.one().get("isSucc")));
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 

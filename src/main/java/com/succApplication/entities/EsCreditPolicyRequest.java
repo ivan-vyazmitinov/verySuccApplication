@@ -1,8 +1,8 @@
 package com.succApplication.entities;
 
 public class EsCreditPolicyRequest {
-    String kind;
-    EsCreditPolicyRequestParams params;
+    private String kind;
+    private EsCreditPolicyRequestParams params;
 
     public EsCreditPolicyRequest(String kind, EsCreditPolicyRequestParams params) {
         this.kind = kind;

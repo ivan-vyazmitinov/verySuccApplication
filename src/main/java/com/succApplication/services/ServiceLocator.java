@@ -10,7 +10,9 @@ public class ServiceLocator {
     static {
         map.put(ContextRepository.class,  new DefaultContextRepository());
         map.put(SuccRepository.class, new MySqlSuccRepository());
-        map.put(SuccService.class,  new SuccService());
+
+        map.put(SuccService.class,  new DefaultSuccService());
+        map.put(ContextService.class,  new DefaultContextService());
     }
 
     public static <T> T getService (Class c){

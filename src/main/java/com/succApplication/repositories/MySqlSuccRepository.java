@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class MySqlSuccRepository implements SuccRepository{
 
@@ -27,7 +28,7 @@ public class MySqlSuccRepository implements SuccRepository{
             "                 );";
 
 
-    public Sucker findByName(String name){
+    public Optional<Sucker> findByName(String name){
         try (Connection conn = MysqlConnectionPool.getPool().getConnection()){
             conn.setAutoCommit(false);
             System.out.println("Connected to SQLite, going to Select");
@@ -37,13 +38,14 @@ public class MySqlSuccRepository implements SuccRepository{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isClosed()){
-                return new Sucker(resultSet.getString("NAME"), resultSet.getBoolean("isSucc"));
+                return Optional.of(new Sucker(resultSet.getString("NAME"),
+                        resultSet.getBoolean("isSucc")));
             } else {
-                return null;
+                return Optional.empty();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return null;
+            return Optional.empty();
         }
     }
 

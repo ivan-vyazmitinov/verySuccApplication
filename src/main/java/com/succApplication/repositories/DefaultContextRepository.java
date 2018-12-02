@@ -1,9 +1,6 @@
 package com.succApplication.repositories;
 
 import com.mongodb.*;
-import com.succApplication.entities.Sucker;
-
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;

@@ -11,7 +11,7 @@ public class EsCreditPolicyStubController {
     @Autowired
     private ContextService contextService;
 
-    @RequestMapping(value = "/stubPolicyRequest", method = RequestMethod.POST)
+    @PostMapping(value = "/stubPolicyRequest")
     public EsCreditPolicyStubbedResponse update(@RequestBody EsCreditPolicyRequest request) {
         return new EsCreditPolicyStubbedResponse(
                 request.getKind(),

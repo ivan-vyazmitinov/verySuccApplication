@@ -1,4 +1,4 @@
-package com.succApplication;
+package com.succApplication.config;
 
 import com.succApplication.repositories.ContextRepository;
 import com.succApplication.repositories.DefaultContextRepository;
@@ -17,25 +17,21 @@ import org.springframework.context.annotation.Lazy;
 public class AppConfig {
 
     @Bean
-    @Lazy
     public ContextService contextService() {
         return new DefaultContextService();
     }
 
     @Bean
-    @Lazy
     public ContextRepository contextRepository() {
         return new DefaultContextRepository();
     }
 
     @Bean
-    @Lazy
     public SuccService succService() {
         return new DefaultSuccService();
     }
 
     @Bean
-    @Lazy
     public SuccRepository succRepository() {
         return new MySqlSuccRepository();
     }

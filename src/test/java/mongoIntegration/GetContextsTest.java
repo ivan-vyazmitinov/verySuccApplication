@@ -1,4 +1,4 @@
-package MongoIntegration;
+package mongoIntegration;
 
 import com.succApplication.repositories.DefaultContextRepository;
 import org.junit.Test;

@@ -3,6 +3,7 @@ package com.succApplication.repositories;
 import com.succApplication.entities.Sucker;
 import com.mongodb.*;
 
+import java.util.List;
 import java.util.Optional;
 
 public class MongoSuccRepository implements SuccRepository{
@@ -38,5 +39,10 @@ public class MongoSuccRepository implements SuccRepository{
         document.put("name", sucker.getName());
         document.put("isSucc", true);
         collection.insert(document);
+    }
+
+    @Override
+    public List<Sucker> fetchBySucc(boolean isSucc) {
+        return null;
     }
 }

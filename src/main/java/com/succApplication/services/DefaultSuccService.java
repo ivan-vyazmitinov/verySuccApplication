@@ -4,6 +4,7 @@ import com.succApplication.entities.Sucker;
 import com.succApplication.repositories.SuccRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Random;
 
 public class DefaultSuccService implements SuccService {
@@ -23,4 +24,11 @@ public class DefaultSuccService implements SuccService {
         succRepository.saveNewSucc(freshSucker);
         return freshSucker;
     }
+
+    @Override
+    public List<Sucker> getSuckers (Boolean isSucc){
+        return succRepository.fetchBySucc(isSucc);
+    }
+
+
 }

@@ -18,12 +18,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Optional;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class})
-public class ProcessSuccNameTest {
+public class DefaulSuccServiceTest {
 
     @InjectMocks
     SuccService succService = new DefaultSuccService();
@@ -37,7 +39,7 @@ public class ProcessSuccNameTest {
     }
 
     @Test
-    public void testGettingSuck() {
+    public void testGettingExistingSuck() {
         Sucker suckerDummy = new Sucker("Antonekn", false);
         when(succRepository.findByName(anyString())).thenReturn(Optional.of(suckerDummy));
 
@@ -45,4 +47,15 @@ public class ProcessSuccNameTest {
 
         Assert.assertEquals(suckerDummy, result);
     }
+
+    @Test
+    public void testProcessingNewSucc() {
+        Sucker suckerDummy = new Sucker("Antonekn", false);
+        when(succRepository.findByName(anyString())).thenReturn(Optional.empty());
+
+        Sucker result = succService.processSuccName("Antonekn");
+
+        Assert.assertEquals(suckerDummy, result);
+    }
+
 }

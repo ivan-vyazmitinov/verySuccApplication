@@ -14,7 +14,7 @@ public class EsCreditPolicyStubController {
     @PostMapping(value = "/es-credit-policy-2/credit-policy/{version}/decision")
     public EsCreditPolicyStubbedResponse stubPolicyRequest(
             @RequestBody EsCreditPolicyRequest request,
-            @PathVariable("version") String version) {
+            @PathVariable("version") CreditPolicyMods version) {
         return new EsCreditPolicyStubbedResponse(
                 request.getKind(),
                 request.getParams(),

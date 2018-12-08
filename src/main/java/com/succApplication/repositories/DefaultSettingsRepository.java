@@ -3,6 +3,7 @@ package com.succApplication.repositories;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.succApplication.entities.CreditPolicyMods;
 import com.succApplication.services.ConfigurationService;
 
 import java.util.LinkedList;

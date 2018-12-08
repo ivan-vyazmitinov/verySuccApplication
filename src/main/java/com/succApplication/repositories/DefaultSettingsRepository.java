@@ -15,11 +15,12 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class DefaultSettingsRepository implements SettingsRepository {
 
-    @Autowired
-    private  ConfigurationService configuration;
+    private ConfigurationService configuration;
     private final MongoCollection collection;
 
-    public DefaultSettingsRepository() {
+    public DefaultSettingsRepository(ConfigurationService configuration) {
+        this.configuration = configuration;
+
         MongoClient mongoClient = new MongoClient(
                 configuration.getProperty("mongoDBurl"),
                 Integer.parseInt(configuration.getProperty("mongoDBport")));

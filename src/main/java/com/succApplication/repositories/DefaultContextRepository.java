@@ -7,10 +7,7 @@ import com.succApplication.services.ConfigurationService;
 import com.succApplication.services.DefaultConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -20,23 +17,20 @@ public class DefaultContextRepository implements ContextRepository{
     private MongoDatabase database;
 
     public DefaultContextRepository(ConfigurationService configuration) {
+        this.configuration = configuration;
         MongoClient mongoClient = new MongoClient(
                 this.configuration.getProperty("mongoDBurl"),
                 Integer.parseInt(this.configuration.getProperty("mongoDBport")));
         database = mongoClient.getDatabase("succMongoDB");
-        this.configuration = configuration;
     }
 
     @Override
     public List<Map<String, Object>> getContexts(Integer templateId, String mode){
         List<Map<String, Object>> contextList = new LinkedList<>();
-        List<Map<String, Object>> result = new LinkedList<>();
 
         MongoCollection collection = database.getCollection(mode);
         collection.find(eq("template_id", templateId)).into(contextList); //TODO: гавно
         contextList.forEach(n -> n.remove("_id"));
-        result.add(contextList.get(0));
-        return result;
+        return ((List<Map<String, Object>>)contextList.get(0).get("context"));
     }
-
 }

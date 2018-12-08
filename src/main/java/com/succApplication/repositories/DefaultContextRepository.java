@@ -8,22 +8,27 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class DefaultContextRepository implements ContextRepository{
-    private final MongoCollection collection ;
+
+    private MongoDatabase database;
 
     public DefaultContextRepository() {
         MongoClient mongoClient = new MongoClient("localhost", 27017);
-        MongoDatabase database = mongoClient.getDatabase("succMongoDB");
-        collection = database.getCollection("context");
+        database = mongoClient.getDatabase("succMongoDB");
     }
 
     @Override
-    public List<Map<String, Object>> getContexts(){
+    public List<Map<String, Object>> getContexts(Integer templateId, String mode){
         List<Map<String, Object>> contextList = new LinkedList<>();
+        List<Map<String, Object>> result = new LinkedList<>();
 
-        collection.find().into(contextList);
+        MongoCollection collection = database.getCollection(mode);
+        collection.find(eq("template_id", templateId)).into(contextList); //TODO: гавно
         contextList.forEach(n -> n.remove("_id"));
-        return contextList;
+        result.add(contextList.get(0));
+        return result;
     }
 
 }

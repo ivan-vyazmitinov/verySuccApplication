@@ -1,13 +1,24 @@
 package com.succApplication.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.Objects;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Sucker {
+
+    private Long id;
     private String name;
     private Boolean succ;
 
     public Sucker(String name, Boolean succ) {
+        this.name = name;
+        this.succ = succ;
+    }
+
+    public Sucker(Long id, String name, Boolean succ) {
+        this.id = id;
         this.name = name;
         this.succ = succ;
     }
@@ -18,6 +29,10 @@ public class Sucker {
 
     public Boolean getSucc() {
         return succ;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

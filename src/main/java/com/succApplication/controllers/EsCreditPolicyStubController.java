@@ -11,11 +11,13 @@ public class EsCreditPolicyStubController {
     @Autowired
     private ContextService contextService;
 
-    @PostMapping(value = "/stubPolicyRequest")
-    public EsCreditPolicyStubbedResponse update(@RequestBody EsCreditPolicyRequest request) {
+    @PostMapping(value = "/es-credit-policy-2/credit-policy/{version}/decision")
+    public EsCreditPolicyStubbedResponse stubPolicyRequest(
+            @RequestBody EsCreditPolicyRequest request,
+            @PathVariable("version") String version) {
         return new EsCreditPolicyStubbedResponse(
                 request.getKind(),
                 request.getParams(),
-                contextService.getContexts());
+                contextService.getContexts(version));
     }
 }

@@ -7,10 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class MySqlSuccRepository implements SuccRepository{
 
@@ -20,16 +17,8 @@ public class MySqlSuccRepository implements SuccRepository{
 
     private final static String URL = "jdbc:sqlite:C:/sqlite/succDB.db";
     private final static String SELECT_BY_NAME = "select name, isSucc from succ where name = ?";
-    private final static String SELECT_BY_ISSUCC = "select name, isSucc from succ where isSucc = ?";
-    private final static String INSERT_NEW =
-            "     INSERT INTO succ (" +
-            "                     name," +
-            "                     isSucc" +
-            "                 )" +
-            "                 VALUES (" +
-            "                     ?," +
-            "                     ?" +
-            "                 );";
+    private final static String SELECT_BY_ISSUCC = "select id, name, isSucc from succ where isSucc = ?";
+    private final static String INSERT_NEW = "INSERT INTO succ (name, isSucc) VALUES (?, ?);";
 
 
     public Optional<Sucker> findByName(String name){
@@ -42,7 +31,8 @@ public class MySqlSuccRepository implements SuccRepository{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isClosed()){
-                return Optional.of(new Sucker(resultSet.getString("NAME"),
+                return Optional.of(new Sucker(
+                        resultSet.getString("NAME"),
                         resultSet.getBoolean("isSucc")));
             } else {
                 return Optional.empty();
@@ -50,6 +40,30 @@ public class MySqlSuccRepository implements SuccRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Optional.empty();
+        }
+    }
+
+    @Override
+    public List<Sucker> fetchBySucc(boolean isSucc){
+        try (Connection conn = MysqlConnectionPool.getPool().getConnection()){
+            List<Sucker> suckerList = new ArrayList<>();
+            conn.setAutoCommit(false);
+            System.out.println("Connected to SQLite, going to Select");
+
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_BY_ISSUCC);
+            preparedStatement.setBoolean(1, isSucc);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                suckerList.add(new Sucker(
+                        resultSet.getLong("id"),
+                        resultSet.getString("name"),
+                        resultSet.getBoolean("isSucc")));
+            }
+            return suckerList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
         }
     }
 
@@ -66,29 +80,6 @@ public class MySqlSuccRepository implements SuccRepository{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    @Override
-    public List<Sucker> fetchBySucc(boolean isSucc){
-        List<Sucker> suckerList = new ArrayList<>();
-
-        try (Connection conn = MysqlConnectionPool.getPool().getConnection()){
-            conn.setAutoCommit(false);
-            System.out.println("Connected to SQLite, going to Select");
-
-            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_BY_ISSUCC);
-            preparedStatement.setBoolean(1, isSucc);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()){
-                suckerList.add(new Sucker(resultSet.getString("name"),
-                        resultSet.getBoolean("isSucc")));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return suckerList;
-        }
-        return suckerList;
     }
 
     private void establishDriver(){

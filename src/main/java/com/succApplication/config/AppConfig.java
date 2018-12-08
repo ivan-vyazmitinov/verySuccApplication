@@ -1,9 +1,6 @@
 package com.succApplication.config;
 
-import com.succApplication.repositories.ContextRepository;
-import com.succApplication.repositories.DefaultContextRepository;
-import com.succApplication.repositories.MySqlSuccRepository;
-import com.succApplication.repositories.SuccRepository;
+import com.succApplication.repositories.*;
 import com.succApplication.services.ContextService;
 import com.succApplication.services.DefaultContextService;
 import com.succApplication.services.DefaultSuccService;
@@ -29,6 +26,11 @@ public class AppConfig {
     @Bean
     public SuccService succService() {
         return new DefaultSuccService();
+    }
+
+    @Bean
+    public SettingsRepository settingsRepository() {
+        return new DefaultSettingsRepository();
     }
 
     @Bean

@@ -2,6 +2,7 @@ package com.succApplication.repositories;
 
 import com.succApplication.config.AppConfig;
 import com.succApplication.services.ConfigurationService;
+import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,6 @@ public class GetContextsTest {
 
     @Test
     public void testGettingSuck() {
-        System.out.println(repo.getContexts(1, "main-policy"));
+        System.out.println(repo.getContexts(new ObjectId("5c0b018491084600411d0ffa"), "main-policy"));
     }
 }

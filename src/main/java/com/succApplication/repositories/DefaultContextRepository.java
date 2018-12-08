@@ -17,6 +17,7 @@ public class DefaultContextRepository implements ContextRepository{
 
     public DefaultContextRepository(ConfigurationService configuration) {
         this.configuration = configuration;
+
         MongoClient mongoClient = new MongoClient(
                 this.configuration.getProperty("mongoDBurl"),
                 Integer.parseInt(this.configuration.getProperty("mongoDBport")));

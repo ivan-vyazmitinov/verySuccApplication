@@ -17,7 +17,7 @@ public class DefaultConfigService implements ConfigurationService {
         try{
             prop.load(inputStream);
         } catch (IOException e){
-            throw new RuntimeException("property file '" + CONFIG_FILE_NAME + "' not found in the classpath");
+            throw new RuntimeException(String.format("property file '%s' not found in the classpath", CONFIG_FILE_NAME));
         }
     }
 

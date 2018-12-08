@@ -3,20 +3,28 @@ package com.succApplication.repositories;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.succApplication.services.ConfigurationService;
+import com.succApplication.services.DefaultConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import static com.mongodb.client.model.Filters.eq;
 
 public class DefaultContextRepository implements ContextRepository{
 
+    private ConfigurationService configuration;
     private MongoDatabase database;
 
-    public DefaultContextRepository() {
-        MongoClient mongoClient = new MongoClient("localhost", 27017);
+    public DefaultContextRepository(ConfigurationService configuration) {
+        MongoClient mongoClient = new MongoClient(
+                this.configuration.getProperty("mongoDBurl"),
+                Integer.parseInt(this.configuration.getProperty("mongoDBport")));
         database = mongoClient.getDatabase("succMongoDB");
+        this.configuration = configuration;
     }
 
     @Override

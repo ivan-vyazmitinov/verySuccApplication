@@ -9,9 +9,12 @@ import java.util.Random;
 
 public class DefaultSuccService implements SuccService {
 
-    @Autowired
     private SuccRepository succRepository;
     final private Random random = new Random();
+
+    public DefaultSuccService(SuccRepository succRepository) {
+        this.succRepository = succRepository;
+    }
 
     @Override
     public Sucker processSuccName(String name){

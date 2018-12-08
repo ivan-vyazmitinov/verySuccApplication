@@ -10,6 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="complete_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-mongodb-parent:pom:2.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.xerial:sqlite-jdbc:3.23.1" level="project" />
     <orderEntry type="library" name="Gradle: org.mongodb:mongo-java-driver:3.9.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE" level="project" />

@@ -1,10 +1,7 @@
 package com.succApplication.config;
 
 import com.succApplication.repositories.*;
-import com.succApplication.services.ContextService;
-import com.succApplication.services.DefaultContextService;
-import com.succApplication.services.DefaultSuccService;
-import com.succApplication.services.SuccService;
+import com.succApplication.services.*;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,17 +17,22 @@ public class AppConfig {
 
     @Bean
     public ContextRepository contextRepository() {
-        return new DefaultContextRepository();
+        return new DefaultContextRepository(configService());
     }
 
     @Bean
     public SuccService succService() {
-        return new DefaultSuccService();
+        return new DefaultSuccService(succRepository());
     }
 
     @Bean
     public SettingsRepository settingsRepository() {
         return new DefaultSettingsRepository();
+    }
+
+    @Bean
+    public ConfigurationService configService() {
+        return new DefaultConfigService();
     }
 
     @Bean

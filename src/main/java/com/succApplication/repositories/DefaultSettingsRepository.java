@@ -3,6 +3,8 @@ package com.succApplication.repositories;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.succApplication.services.ConfigurationService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,10 +15,14 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class DefaultSettingsRepository implements SettingsRepository {
 
+    @Autowired
+    private  ConfigurationService configuration;
     private final MongoCollection collection;
 
     public DefaultSettingsRepository() {
-        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoClient mongoClient = new MongoClient(
+                configuration.getProperty("mongoDBurl"),
+                Integer.parseInt(configuration.getProperty("mongoDBport")));
         MongoDatabase database = mongoClient.getDatabase("succMongoDB");
         collection = database.getCollection("settings");
     }

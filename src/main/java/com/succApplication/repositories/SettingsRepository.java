@@ -1,7 +1,8 @@
 package com.succApplication.repositories;
 
 import com.succApplication.entities.CreditPolicyMods;
+import org.bson.types.ObjectId;
 
 public interface SettingsRepository {
-    Integer getTemplateId(String version);
+    ObjectId getTemplateId(String version);
 }

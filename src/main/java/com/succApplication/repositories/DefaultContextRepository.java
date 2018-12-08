@@ -4,6 +4,7 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.succApplication.services.ConfigurationService;
+import org.bson.types.ObjectId;
 
 import java.util.*;
 
@@ -23,11 +24,11 @@ public class DefaultContextRepository implements ContextRepository{
     }
 
     @Override
-    public List<Map<String, Object>> getContexts(Integer templateId, String mode){
+    public List<Map<String, Object>> getContexts(ObjectId templateId, String mode){
         List<Map<String, Object>> contextList = new LinkedList<>();
 
         MongoCollection collection = database.getCollection(mode);
-        collection.find(eq("template_id", templateId)).into(contextList); //TODO: гавно
+        collection.find(eq("_id", templateId)).into(contextList); //TODO: гавно
         contextList.forEach(n -> n.remove("_id"));
         return ((List<Map<String, Object>>)contextList.get(0).get("context"));
     }

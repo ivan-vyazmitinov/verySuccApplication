@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.succApplication.entities.CreditPolicyMods;
 import com.succApplication.services.ConfigurationService;
+import org.bson.types.ObjectId;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,9 +29,9 @@ public class DefaultSettingsRepository implements SettingsRepository {
     }
 
     @Override
-    public Integer getTemplateId(String mode) {
+    public ObjectId getTemplateId(String mode) {
         List<Map<String,Object>> template = new LinkedList<>(); //TODO: гавно
         collection.find(eq("mode",mode)).into(template);
-        return (Integer) template.get(0).get("template");
+        return (ObjectId) template.get(0).get("template");
     }
 }

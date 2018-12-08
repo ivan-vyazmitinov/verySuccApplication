@@ -1,10 +1,9 @@
-package unit;
+package com.succApplication.services;
 
 import com.succApplication.config.AppConfig;
 import com.succApplication.entities.Sucker;
+import com.succApplication.repositories.MySqlSuccRepository;
 import com.succApplication.repositories.SuccRepository;
-import com.succApplication.services.DefaultSuccService;
-import com.succApplication.services.SuccService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,14 +11,12 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Optional;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -28,7 +25,7 @@ import static org.mockito.Mockito.when;
 public class DefaulSuccServiceTest {
 
     @InjectMocks
-    SuccService succService = new DefaultSuccService();
+    SuccService succService = new DefaultSuccService(new MySqlSuccRepository());
 
     @Mock
     SuccRepository succRepository;

@@ -2,7 +2,6 @@ package com.succApplication.services;
 
 import com.succApplication.entities.Sucker;
 import com.succApplication.repositories.SuccRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Random;

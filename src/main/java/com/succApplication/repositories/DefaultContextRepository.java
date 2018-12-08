@@ -4,8 +4,6 @@ import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.succApplication.services.ConfigurationService;
-import com.succApplication.services.DefaultConfigService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 

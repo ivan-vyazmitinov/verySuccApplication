@@ -24,9 +24,8 @@ public class DefaultContextService implements ContextService {
 
     @Override
     public List<Map<String, Object>> getContexts(String version){
-        List<Map<String, Object>> contexts = contextRepository.getContexts(
+        return contextRepository.getContexts(
                 settingsRepository.getTemplateId(version),
                 versionModeMap.get(version));
-        return contexts;
     }
 }

@@ -32,4 +32,9 @@ public class AppConfig {
     public ContextRepository contextRepository(){
         return new DefaultContextRepository();
     }
+
+    @Bean
+    public SettingsRepository settingsRepository(){
+        return new DefaultSettingsRepository();
+    }
 }

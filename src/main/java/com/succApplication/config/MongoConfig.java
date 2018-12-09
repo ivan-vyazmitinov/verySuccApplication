@@ -5,10 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-//@EnableMongoRepositories(basePackages = "com.succApplication.repositories")
 public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override

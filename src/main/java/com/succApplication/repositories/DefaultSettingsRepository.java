@@ -1,26 +1,20 @@
 package com.succApplication.repositories;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.succApplication.services.ConfigurationService;
-import org.bson.types.ObjectId;
+import com.succApplication.entities.ModeSettings;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import static org.springframework.data.mongodb.core.query.Criteria.where;
 
-import static com.mongodb.client.model.Filters.eq;
 
-public class DefaultSettingsRepository {
+public class DefaultSettingsRepository implements SettingsRepository{
 
-    private ConfigurationService configuration;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
-    public DefaultSettingsRepository() {
+    public ModeSettings findByMode (String mode){
+        Query query = Query.query(where("mode").in(mode));
+        return mongoTemplate.findOne(query, ModeSettings.class);     //TODO: optional?
     }
-
-    public ObjectId getTemplateId(String mode) {
-        return null;
-    }
-
 }

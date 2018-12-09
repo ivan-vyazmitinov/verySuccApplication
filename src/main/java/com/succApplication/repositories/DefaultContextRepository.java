@@ -12,13 +12,8 @@ public class DefaultContextRepository implements ContextRepository{
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public DefaultContextRepository() {
-    }
-
     public List<Map<String, Object>> findById (ObjectId id){
         PolicyContextGroup context = mongoTemplate.findById(id, PolicyContextGroup.class);
         return context.getContext();                                                            //TODO: optional
     }
-
-
 }

@@ -24,11 +24,6 @@ public class AppConfig {
     }
 
     @Bean
-    public SettingsRepository settingsRepository() {
-        return new DefaultSettingsRepository(configService());
-    }
-
-    @Bean
     public ConfigurationService configService() {
         return new DefaultConfigService();
     }

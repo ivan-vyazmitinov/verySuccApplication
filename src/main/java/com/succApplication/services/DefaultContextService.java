@@ -1,6 +1,7 @@
 package com.succApplication.services;
 
 import com.succApplication.entities.CreditPolicyMods;
+import com.succApplication.entities.ModeSettings;
 import com.succApplication.repositories.ContextRepository;
 import com.succApplication.repositories.SettingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,10 @@ public class DefaultContextService implements ContextService {
 
     @Override
     public List<Map<String, Object>> getContexts(CreditPolicyMods version){
+
+        ModeSettings ms = settingsRepository.findByMode(version.getGeg());
         return contextRepository.getContexts(
-                settingsRepository.getTemplateId(version.getGeg()),
+                ms.template,
                 version.getGeg());
     }
 }

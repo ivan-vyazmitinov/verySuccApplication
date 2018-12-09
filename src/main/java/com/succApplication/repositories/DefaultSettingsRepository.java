@@ -3,7 +3,6 @@ package com.succApplication.repositories;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.succApplication.entities.CreditPolicyMods;
 import com.succApplication.services.ConfigurationService;
 import org.bson.types.ObjectId;
 
@@ -13,13 +12,13 @@ import java.util.Map;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class DefaultSettingsRepository implements SettingsRepository {
+public class DefaultSettingsRepository {  //} implements SettingsRepository {
 
     private ConfigurationService configuration;
     private final MongoCollection collection;
 
-    public DefaultSettingsRepository(ConfigurationService configuration) {
-        this.configuration = configuration;
+    public DefaultSettingsRepository() {
+        //this.configuration = configuration;
 
         MongoClient mongoClient = new MongoClient(
                 configuration.getProperty("mongoDBurl"),
@@ -28,10 +27,11 @@ public class DefaultSettingsRepository implements SettingsRepository {
         collection = database.getCollection("settings");
     }
 
-    @Override
+    //@Override
     public ObjectId getTemplateId(String mode) {
         List<Map<String,Object>> template = new LinkedList<>(); //TODO: гавно
         collection.find(eq("mode",mode)).into(template);
         return (ObjectId) template.get(0).get("template");
     }
+
 }

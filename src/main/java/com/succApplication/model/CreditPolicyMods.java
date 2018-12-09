@@ -1,4 +1,4 @@
-package com.succApplication.entities;
+package com.succApplication.model;
 
 public enum CreditPolicyMods {
     MAIN_POLICY("main-policy"),

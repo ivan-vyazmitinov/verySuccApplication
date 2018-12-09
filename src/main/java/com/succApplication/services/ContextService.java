@@ -1,6 +1,6 @@
 package com.succApplication.services;
 
-import com.succApplication.entities.CreditPolicyMods;
+import com.succApplication.model.CreditPolicyMods;
 
 import java.util.List;
 import java.util.Map;

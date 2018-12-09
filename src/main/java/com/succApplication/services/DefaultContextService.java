@@ -1,7 +1,7 @@
 package com.succApplication.services;
 
-import com.succApplication.entities.CreditPolicyMods;
-import com.succApplication.entities.ModeSettings;
+import com.succApplication.model.CreditPolicyMods;
+import com.succApplication.model.ModeSettings;
 import com.succApplication.repositories.ContextRepository;
 import com.succApplication.repositories.SettingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,6 @@ public class DefaultContextService implements ContextService {
     public List<Map<String, Object>> getContexts(CreditPolicyMods version)
     {
         ModeSettings modeSettings = settingsRepository.findByMode(version.getGeg());
-        return contextRepository.findById(modeSettings.template);
+        return contextRepository.findById(modeSettings.contextId);
     }
 }

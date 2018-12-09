@@ -1,6 +1,6 @@
 package com.succApplication.controllers;
 
-import com.succApplication.entities.*;
+import com.succApplication.model.*;
 import com.succApplication.services.ContextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

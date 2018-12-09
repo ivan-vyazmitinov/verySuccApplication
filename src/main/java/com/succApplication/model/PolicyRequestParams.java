@@ -1,4 +1,4 @@
-package com.succApplication.entities;
+package com.succApplication.model;
 
 public class PolicyRequestParams {
     private long creditId;

@@ -1,4 +1,4 @@
-package com.succApplication.entities;
+package com.succApplication.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class PolicyContextGroup {
     @Id
     String id;
-    String  templateId;
+    String templateId;
     String mode;
     List<Map<String, Object>> context;
 

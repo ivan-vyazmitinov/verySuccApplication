@@ -1,6 +1,6 @@
 package com.succApplication.repositories;
 
-import com.succApplication.entities.ModeSettings;
+import com.succApplication.model.ModeSettings;
 
 public interface SettingsRepository {
     ModeSettings findByMode(String version);

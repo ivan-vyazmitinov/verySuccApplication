@@ -14,18 +14,8 @@ public class AppConfig {
     }
 
     @Bean
-    public SuccService succService() {
-        return new DefaultSuccService(succRepository());
-    }
-
-    @Bean
     public ConfigurationService configService() {
         return new DefaultConfigService();
-    }
-
-    @Bean
-    public SuccRepository succRepository() {
-        return new MySqlSuccRepository();
     }
 
     @Bean

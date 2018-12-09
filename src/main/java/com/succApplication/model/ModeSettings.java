@@ -1,4 +1,4 @@
-package com.succApplication.entities;
+package com.succApplication.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -9,10 +9,10 @@ public class ModeSettings {
     @Id
     public String id;
     public String mode;
-    public ObjectId template;
+    public ObjectId contextId;
 
-    public ModeSettings(String mode, ObjectId template) {
+    public ModeSettings(String mode, ObjectId contextId) {
         this.mode = mode;
-        this.template = template;
+        this.contextId = contextId;
     }
 }

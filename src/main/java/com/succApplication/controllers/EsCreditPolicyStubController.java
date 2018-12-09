@@ -12,10 +12,10 @@ public class EsCreditPolicyStubController {
     private ContextService contextService;
 
     @PostMapping(value = "/es-credit-policy-2/credit-policy/{version}/decision")
-    public EsCreditPolicyStubbedResponse stubPolicyRequest(
-            @RequestBody EsCreditPolicyRequest request,
+    public PolicyStubbedResponse stubPolicyRequest(
+            @RequestBody PolicyRequest request,
             @PathVariable("version") CreditPolicyMods version) {
-        return new EsCreditPolicyStubbedResponse(
+        return new PolicyStubbedResponse(
                 request.getKind(),
                 request.getParams(),
                 contextService.getContexts(version));

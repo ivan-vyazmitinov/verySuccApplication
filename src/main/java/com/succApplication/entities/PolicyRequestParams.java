@@ -1,10 +1,10 @@
 package com.succApplication.entities;
 
-public class EsCreditPolicyRequestParams {
+public class PolicyRequestParams {
     private long creditId;
     private long borrowerId;
 
-    public EsCreditPolicyRequestParams(long creditId, long borrowerId) {
+    public PolicyRequestParams(long creditId, long borrowerId) {
         this.creditId = creditId;
         this.borrowerId = borrowerId;
     }

@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EsCreditPolicyStubbedResponse {
+public class PolicyStubbedResponse {
     private String kind;
-    private EsCreditPolicyRequestParams params;
+    private PolicyRequestParams params;
     private List<Map<String, Object>> context;
 
-    public EsCreditPolicyStubbedResponse(String kind, EsCreditPolicyRequestParams params, List<Map<String, Object>> context) {
+    public PolicyStubbedResponse(String kind, PolicyRequestParams params, List<Map<String, Object>> context) {
         this.kind = kind;
         this.params = params;
         this.context = context;
@@ -21,7 +21,7 @@ public class EsCreditPolicyStubbedResponse {
         return kind;
     }
 
-    public EsCreditPolicyRequestParams getParams() {
+    public PolicyRequestParams getParams() {
         return params;
     }
 

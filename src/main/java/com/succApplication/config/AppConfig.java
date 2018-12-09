@@ -14,11 +14,6 @@ public class AppConfig {
     }
 
     @Bean
-    public ContextRepository contextRepository() {
-        return new DefaultContextRepository(configService());
-    }
-
-    @Bean
     public SuccService succService() {
         return new DefaultSuccService(succRepository());
     }
@@ -31,5 +26,10 @@ public class AppConfig {
     @Bean
     public SuccRepository succRepository() {
         return new MySqlSuccRepository();
+    }
+
+    @Bean
+    public ContextRepository contextRepository(){
+        return new DefaultContextRepository();
     }
 }

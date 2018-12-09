@@ -1,36 +1,24 @@
 package com.succApplication.repositories;
 
-import com.mongodb.*;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.succApplication.services.ConfigurationService;
+import com.succApplication.entities.PolicyContextGroup;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.*;
 
-import static com.mongodb.client.model.Filters.eq;
-
 public class DefaultContextRepository implements ContextRepository{
 
-    private ConfigurationService configuration;
-    private MongoDatabase database;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
-    public DefaultContextRepository(ConfigurationService configuration) {
-        this.configuration = configuration;
-
-        MongoClient mongoClient = new MongoClient(
-                this.configuration.getProperty("mongoDBurl"),
-                Integer.parseInt(this.configuration.getProperty("mongoDBport")));
-        database = mongoClient.getDatabase("succMongoDB");
+    public DefaultContextRepository() {
     }
 
-    @Override
-    public List<Map<String, Object>> getContexts(ObjectId templateId, String mode){
-        List<Map<String, Object>> contextList = new LinkedList<>();
-
-        MongoCollection collection = database.getCollection(mode);
-        collection.find(eq("_id", templateId)).into(contextList); //TODO: гавно
-        contextList.forEach(n -> n.remove("_id"));
-        return ((List<Map<String, Object>>)contextList.get(0).get("context"));
+    public List<Map<String, Object>> findById (ObjectId id){
+        PolicyContextGroup context = mongoTemplate.findById(id, PolicyContextGroup.class);
+        return context.getContext();                                                            //TODO: optional
     }
+
+
 }

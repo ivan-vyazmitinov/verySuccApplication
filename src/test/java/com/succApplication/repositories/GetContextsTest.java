@@ -16,8 +16,5 @@ public class GetContextsTest {
     @Autowired
     DefaultContextRepository repo;
 
-    @Test
-    public void testGettingSuck() {
-        System.out.println(repo.getContexts(new ObjectId("5c0b018491084600411d0ffa"), "main-policy"));
-    }
+    // TODO: test
 }

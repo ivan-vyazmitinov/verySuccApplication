@@ -12,26 +12,15 @@ import java.util.Map;
 
 import static com.mongodb.client.model.Filters.eq;
 
-public class DefaultSettingsRepository {  //} implements SettingsRepository {
+public class DefaultSettingsRepository {
 
     private ConfigurationService configuration;
-    private final MongoCollection collection;
 
     public DefaultSettingsRepository() {
-        //this.configuration = configuration;
-
-        MongoClient mongoClient = new MongoClient(
-                configuration.getProperty("mongoDBurl"),
-                Integer.parseInt(configuration.getProperty("mongoDBport")));
-        MongoDatabase database = mongoClient.getDatabase("succMongoDB");
-        collection = database.getCollection("settings");
     }
 
-    //@Override
     public ObjectId getTemplateId(String mode) {
-        List<Map<String,Object>> template = new LinkedList<>(); //TODO: гавно
-        collection.find(eq("mode",mode)).into(template);
-        return (ObjectId) template.get(0).get("template");
+        return null;
     }
 
 }

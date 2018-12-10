@@ -15,6 +15,6 @@ public class DefaultSettingsRepository implements SettingsRepository{
 
     public ModeSettings findByMode (String mode){
         Query query = Query.query(where("mode").in(mode));
-        return mongoTemplate.findOne(query, ModeSettings.class);     //TODO: optional?
+        return mongoTemplate.findOne(query, ModeSettings.class);
     }
 }

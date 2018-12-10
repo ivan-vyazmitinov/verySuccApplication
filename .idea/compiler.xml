@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="complete_main" target="1.8" />
       <module name="complete_test" target="1.8" />
+      <module name="verySuccApplication2_main" target="1.8" />
+      <module name="verySuccApplication2_test" target="1.8" />
       <module name="verySuccApplication_main" target="1.8" />
       <module name="verySuccApplication_test" target="1.8" />
     </bytecodeTargetLevel>

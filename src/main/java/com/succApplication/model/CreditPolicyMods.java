@@ -4,13 +4,13 @@ public enum CreditPolicyMods {
     MAIN_POLICY("main-policy"),
     PRELIMINARY_POLICY("preliminary-policy");
 
-    private String geg;
+    private String policyName;
 
-    CreditPolicyMods(String geg) {
-        this.geg = geg;
+    CreditPolicyMods(String policyName) {
+        this.policyName = policyName;
     }
 
-    public String getGeg() {
-        return geg;
+    public String getPolicyName() {
+        return policyName;
     }
 }

@@ -19,7 +19,7 @@ public class DefaultContextService implements ContextService {
     @Override
     public List<Map<String, Object>> getContexts(CreditPolicyMods version)
     {
-        ModeSettings modeSettings = settingsRepository.findByMode(version.getGeg());
+        ModeSettings modeSettings = settingsRepository.findByMode(version.getPolicyName());
         return contextRepository.findById(modeSettings.contextId);
     }
 }

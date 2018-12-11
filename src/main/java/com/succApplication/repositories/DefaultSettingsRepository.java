@@ -8,13 +8,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 
-public class DefaultSettingsRepository implements SettingsRepository{
+public class DefaultSettingsRepository implements SettingsRepository {
 
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public ModeSettings findByMode (String mode){
-        Query query = Query.query(where("mode").in(mode));
+    public ModeSettings findByMode(String mode) {
+        Query query = Query.query(where("mode").is(mode));
         return mongoTemplate.findOne(query, ModeSettings.class);
     }
 }

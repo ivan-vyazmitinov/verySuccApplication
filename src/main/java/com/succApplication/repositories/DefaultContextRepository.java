@@ -23,9 +23,9 @@ public class DefaultContextRepository implements ContextRepository{
     }
 
     @Override
-    public PolicyContextGroup findByMode(String mode) {
+    public List<PolicyContextGroup> findByMode(String mode) {
         Query query = Query.query(where("mode").is(mode).and("active").is(true));
-        return mongoTemplate.findOne(query, PolicyContextGroup.class);
+        return mongoTemplate.find(query, PolicyContextGroup.class);
     }
 }
 

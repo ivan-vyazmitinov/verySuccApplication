@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @Document(collection = "context")
 public class PolicyContextGroup {
@@ -16,5 +17,9 @@ public class PolicyContextGroup {
 
     public List<Map<String, Object>> getContext() {
         return context;
+    }
+
+    public Stream getContextInANewWay(){
+        return context.stream();
     }
 }

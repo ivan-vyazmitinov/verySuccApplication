@@ -9,5 +9,5 @@ import java.util.Map;
 
 public interface ContextRepository{
     List<Map<String, Object>> findById(ObjectId id);
-    PolicyContextGroup findByMode(String mode);
+    List<PolicyContextGroup> findByMode(String mode);
 }

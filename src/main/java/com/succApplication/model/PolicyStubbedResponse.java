@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PolicyStubbedResponse {
+public class PolicyStubbedResponse{
     private String kind;
     private PolicyRequestParams params;
     private List<Map<String, Object>> context;

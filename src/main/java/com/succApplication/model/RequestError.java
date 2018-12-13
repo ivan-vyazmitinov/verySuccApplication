@@ -1,6 +1,6 @@
 package com.succApplication.model;
 
-public class RequestError {
+public class RequestError{
     final private String errorText;
 
     public RequestError(String errorText){

@@ -29,6 +29,7 @@ public class DefaultSuccService implements SuccService {
 
     @Override
     public List<Sucker> getSuckers (Boolean isSucc){
+        System.out.println("playing with github");
         return succRepository.fetchBySucc(isSucc);
     }
 

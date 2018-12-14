@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ModeSettings {
     @Id
     public String id;
-    public String mode;
+    public String mode;        //косяк !   в данном случае поля должны быть private final !!!
     public ObjectId contextId;
 
     public ModeSettings(String mode, ObjectId contextId) {

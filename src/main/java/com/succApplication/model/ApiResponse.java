@@ -1,6 +1,4 @@
-package com.succApplication.model;
-
-import static java.util.Collections.singletonList;
+package com.succApplication.model;  //название пакета полный отстой! почитай clean code
 
 public class ApiResponse<T> {
 
@@ -8,7 +6,8 @@ public class ApiResponse<T> {
 
     public ApiResponse(T response) {
         this.response = response;
-    }
+    }   // если у тебя есть паблик статик метод для создания,
+    // то зачем тебе тут паблик? этот метод должен быть private
 
     public static <T> ApiResponse<T> answer(T value) {
         return new ApiResponse<>(value);

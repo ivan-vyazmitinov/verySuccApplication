@@ -6,6 +6,11 @@ import java.util.Properties;
 
 public class DefaultConfigService implements ConfigurationService {
 
+
+    // @PropertySource("classpath:config.properties")   не?
+    // а потом @Value( "${super.prop}" )
+
+
     private final String CONFIG_FILE_NAME = "config.properties";
     private Properties prop;
     private InputStream inputStream ;

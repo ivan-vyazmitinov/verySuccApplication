@@ -1,7 +1,6 @@
-package com.succApplication.repositories;
+package com.succapplication.repositories;
 
-import com.succApplication.model.ModeSettings;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.succapplication.model.ModeSettings;
 
 public interface SettingsRepository {
     ModeSettings findByMode(String version);

@@ -1,4 +1,4 @@
-.mvn/
-.gradle/
-.idea/
-out/
+.mvn/*
+.gradle/*
+.idea/*
+out/*

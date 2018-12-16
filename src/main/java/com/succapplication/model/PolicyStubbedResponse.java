@@ -1,4 +1,4 @@
-package com.succApplication.model;
+package com.succapplication.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

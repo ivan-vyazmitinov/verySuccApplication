@@ -1,7 +1,7 @@
-package com.succApplication.config;
+package com.succapplication.config;
 
-import com.succApplication.repositories.*;
-import com.succApplication.services.*;
+import com.succapplication.repositories.*;
+import com.succapplication.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

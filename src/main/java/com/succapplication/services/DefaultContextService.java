@@ -1,8 +1,8 @@
-package com.succApplication.services;
+package com.succapplication.services;
 
-import com.succApplication.model.CreditPolicyMods;
-import com.succApplication.repositories.ContextRepository;
-import com.succApplication.repositories.SettingsRepository;
+import com.succapplication.model.CreditPolicyMods;
+import com.succapplication.repositories.ContextRepository;
+import com.succapplication.repositories.SettingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.succApplication.config;
+package com.succapplication.config;
 
 import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;

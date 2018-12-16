@@ -1,4 +1,4 @@
-package com.succApplication.model;  //название пакета полный отстой! почитай clean code
+package com.succapplication.model;  //название пакета полный отстой! почитай clean code
 
 public class ApiResponse<T> {
 

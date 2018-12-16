@@ -1,7 +1,6 @@
-package com.succApplication.repositories;
+package com.succapplication.repositories;
 
-import com.succApplication.model.CreditPolicyMods;
-import com.succApplication.model.PolicyContextGroup;
+import com.succapplication.model.PolicyContextGroup;
 import org.bson.types.ObjectId;
 
 import java.util.List;

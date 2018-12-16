@@ -1,7 +1,7 @@
-package com.succApplication.controllers;   // имена пакетов называют в единственном числе
+package com.succapplication.controllers;   // имена пакетов называют в единственном числе
 
-import com.succApplication.model.*;
-import com.succApplication.services.ContextService;
+import com.succapplication.model.*;
+import com.succapplication.services.ContextService;
 import io.vavr.control.Try;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

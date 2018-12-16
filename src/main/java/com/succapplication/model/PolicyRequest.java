@@ -1,4 +1,4 @@
-package com.succApplication.model;
+package com.succapplication.model;
 
 public class PolicyRequest {
     private String kind;

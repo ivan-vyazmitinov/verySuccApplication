@@ -1,6 +1,6 @@
-package com.succApplication.repositories;
+package com.succapplication.repositories;
 
-import com.succApplication.config.AppConfig;
+import com.succapplication.config.AppConfig;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;

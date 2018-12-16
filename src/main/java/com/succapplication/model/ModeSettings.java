@@ -1,4 +1,4 @@
-package com.succApplication.model;
+package com.succapplication.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

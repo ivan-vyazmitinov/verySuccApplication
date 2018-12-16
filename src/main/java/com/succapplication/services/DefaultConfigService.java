@@ -1,4 +1,4 @@
-package com.succApplication.services;
+package com.succapplication.services;
 
 import java.io.IOException;
 import java.io.InputStream;

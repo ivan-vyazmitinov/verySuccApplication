@@ -1,6 +1,6 @@
-package com.succApplication.repositories;
+package com.succapplication.repositories;
 
-import com.succApplication.model.ModeSettings;
+import com.succapplication.model.ModeSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;

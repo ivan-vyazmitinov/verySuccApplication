@@ -1,30 +1,35 @@
 package com.succapplication.config;
 
-import com.succapplication.repositories.*;
-import com.succapplication.services.*;
+import com.succapplication.repository.*;
+import com.succapplication.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Configuration
 public class AppConfig {
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     @Bean
     public ContextService contextService() {
-        return new DefaultContextService();
+        return new DefaultContextService(contextRepository());
     }
 
     @Bean
-    public ConfigurationService configService() {
-        return new DefaultConfigService();
+    public ContextRepository contextRepository() {
+        return new DefaultContextRepository(mongoTemplate);
     }
 
     @Bean
-    public ContextRepository contextRepository(){
-        return new DefaultContextRepository();
-    }
-
-    @Bean
-    public SettingsRepository settingsRepository(){
+    public SettingsRepository settingsRepository() {
         return new DefaultSettingsRepository();
+    }
+
+    @Bean
+    public TemplateService templateService() {
+        return new DefaultTemplateService(contextRepository());
     }
 }

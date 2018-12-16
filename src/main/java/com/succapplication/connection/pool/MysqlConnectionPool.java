@@ -1,4 +1,4 @@
-package com.succapplication.connectionPool;
+package com.succapplication.connection.pool;
 
 import java.sql.*;
 import java.util.LinkedList;

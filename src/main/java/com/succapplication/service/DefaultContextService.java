@@ -1,8 +1,7 @@
-package com.succapplication.services;
+package com.succapplication.service;
 
 import com.succapplication.model.CreditPolicyMods;
-import com.succapplication.repositories.ContextRepository;
-import com.succapplication.repositories.SettingsRepository;
+import com.succapplication.repository.ContextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -11,15 +10,16 @@ import java.util.stream.Collectors;
 
 public class DefaultContextService implements ContextService {
 
-    @Autowired
     private ContextRepository contextRepository;
+
     @Autowired
-    private SettingsRepository settingsRepository;
+    public DefaultContextService(ContextRepository contextRepository) {
+        this.contextRepository = contextRepository;
+    }
 
     @Override
-    public List<Map<String, Object>> getContexts(CreditPolicyMods version)
-    {
-        return contextRepository.findByMode(version.getPolicyName())
+    public List<Map<String, Object>> getContextsForMode(CreditPolicyMods version) {
+        return contextRepository.findActiveByMode(version)
                 .stream()
                 .flatMap(n -> n.getContext().stream())
                 .collect(Collectors.toList());

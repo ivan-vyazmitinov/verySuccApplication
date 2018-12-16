@@ -1,4 +1,4 @@
-package com.succapplication.repositories;
+package com.succapplication.repository;
 
 import com.succapplication.model.ModeSettings;
 

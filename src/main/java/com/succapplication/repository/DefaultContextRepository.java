@@ -3,7 +3,6 @@ package com.succapplication.repository;
 import com.succapplication.model.CreditPolicyMods;
 import com.succapplication.model.PolicyTemplate;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -17,7 +16,6 @@ public class DefaultContextRepository implements ContextRepository {
 
     private MongoTemplate mongoTemplate;
 
-    @Autowired
     public DefaultContextRepository(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }

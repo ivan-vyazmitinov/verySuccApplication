@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class DefaultTemplateController {
     private TemplateService templateService;
 
-    @Autowired
     public DefaultTemplateController(TemplateService templateService) {
         this.templateService = templateService;
     }
@@ -47,7 +46,7 @@ public class DefaultTemplateController {
                 .get();
     }
 
-    @PutMapping
+    @PutMapping(value = "/context/{name}")
     public ApiResponse updateTemplateRequest(@RequestBody PolicyTemplate template) {
         return Try.of(() -> templateService.updateTemplate(template))
                 .map(ApiResponse::ok)

@@ -11,7 +11,6 @@ public class EsCreditPolicyStubController {
 
     private ContextService contextService;
 
-    @Autowired
     public EsCreditPolicyStubController(ContextService contextService) {
         this.contextService = contextService;
     }
